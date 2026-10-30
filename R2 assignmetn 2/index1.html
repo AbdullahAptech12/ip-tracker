@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private ID — Your Digital Privacy, Protected Automatically</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-halved"></i>
+                <span>Private<span class="logo-accent">ID</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#analyzer">Analyzer</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#chatbot-section">AI Chat</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-elements">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Enterprise-Grade Privacy Protection</span>
+                </div>
+                <h1>Your Digital Privacy, <span class="gradient-text">Protected Automatically</span></h1>
+                <p class="hero-subtitle">Accidentally exposing emails, phone numbers, CNIC numbers, or passwords online? Private ID detects sensitive information instantly and helps you stay protected.</p>
+                <div class="hero-buttons">
+                    <a href="#analyzer" class="btn btn-primary">
+                        <i class="fas fa-search-plus"></i>
+                        Analyze Text Now
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline">
+                        <i class="fas fa-play-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Detection Patterns</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Client-Side</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Data Stored</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=500&fit=crop" alt="Digital Security Shield" class="hero-img">
+                <div class="hero-img-overlay">
+                    <div class="scan-line"></div>
+                </div>
+                <div class="hero-floating-card card-1">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Email Protected</span>
+                </div>
+                <div class="hero-floating-card card-2">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>CNIC Secured</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Banner -->
+    <section class="trust-banner">
+        <div class="trust-container">
+            <p class="trust-text">Trusted privacy analysis powered by advanced pattern recognition</p>
+            <div class="trust-icons">
+                <div class="trust-item">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Privacy First</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant Analysis</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-code"></i>
+                    <span>No Server Upload</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Works Offline</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Text Analyzer Section -->
+    <section class="analyzer-section" id="analyzer">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-radar"></i> Core Tool</span>
+                <h2>Privacy Text <span class="gradient-text">Analyzer</span></h2>
+                <p>Paste or type any text below to scan for sensitive information. Our analyzer detects emails, phone numbers, CNIC patterns, and password keywords in real-time.</p>
+            </div>
+
+            <div class="analyzer-wrapper">
+                <div class="analyzer-input-area">
+                    <div class="input-header">
+                        <div class="input-title">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Input Text</span>
+                        </div>
+                        <div class="char-count">
+                            <span id="charCount">0</span> characters
+                        </div>
+                    </div>
+                    <textarea id="textInput" placeholder="Try pasting text like:&#10;&#10;My email is john.doe@gmail.com and my phone number is 0321-1234567.&#10;My CNIC is 35201-1234567-1 and my password is MyP@ssw0rd123.&#10;Contact me at alice@company.org or call +92 300 1234567."></textarea>
+                    <div class="analyzer-buttons">
+                        <button class="btn btn-primary btn-analyze" id="analyzeBtn">
+                            <i class="fas fa-search-plus"></i>
+                            Analyze Text
+                        </button>
+                        <button class="btn btn-outline btn-clear" id="clearBtn">
+                            <i class="fas fa-eraser"></i>
+                            Clear All
+                        </button>
+                        <button class="btn btn-ghost" id="sampleBtn">
+                            <i class="fas fa-flask"></i>
+                            Load Sample
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Area -->
+                <div class="results-area" id="resultsArea" style="display: none;">
+                    
+                    <!-- Risk Score -->
+                    <div class="risk-score-card" id="riskScoreCard">
+                        <div class="risk-header">
+                            <h3><i class="fas fa-gauge-high"></i> Privacy Risk Score</h3>
+                            <span class="risk-badge" id="riskBadge">Low</span>
+                        </div>
+                        <div class="risk-meter">
+                            <div class="risk-bar">
+                                <div class="risk-fill" id="riskFill"></div>
+                            </div>
+                            <div class="risk-labels">
+                                <span>Safe</span>
+                                <span>Low</span>
+                                <span>Medium</span>
+                                <span>High</span>
+                                <span>Critical</span>
+                            </div>
+                        </div>
+                        <p class="risk-description" id="riskDescription"></p>
+                    </div>
+
+                    <!-- Highlighted Text -->
+                    <div class="highlighted-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-highlighter"></i> Highlighted Sensitive Data</h3>
+                        </div>
+                        <div class="highlighted-text" id="highlightedText"></div>
+                        <div class="highlight-legend">
+                            <span class="legend-item"><span class="legend-dot email-dot"></span> Email</span>
+                            <span class="legend-item"><span class="legend-dot phone-dot"></span> Phone</span>
+                            <span class="legend-item"><span class="legend-dot cnic-dot"></span> CNIC</span>
+                            <span class="legend-item"><span class="legend-dot password-dot"></span> Password</span>
+                        </div>
+                    </div>
+
+                    <!-- Detection Summary -->
+                    <div class="detection-summary">
+                        <div class="detection-card" id="emailDetection">
+                            <div class="detection-icon email-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="detection-info">
+                                <span class="detection-count" id="emailCount">0</span>
+                                <span class="detection-label">Emails Found</span>
+                            </div>
+                            <div class="detection-items" id="emailItems"></div>
+                        </div>
+                        <div class="detection-card" id="phoneDetection">
+                            <div class="detection-icon phone-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="detection-info">
+                                <span class="detection-count" id="phoneCount">0</span>
+                                <span class="detection-label">Phone Numbers</span>
+                            </div>
+                            <div class="detection-items" id="phoneItems"></div>
+                        </div>
+                        <div class="detection-card" id="cnicDetection">
+                            <div class="detection-icon cnic-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <div class="detection-info">
+                                <span class="detection-count" id="cnicCount">0</span>
+                                <span class="detection-label">CNIC Numbers</span>
+                            </div>
+                            <div class="detection-items" id="cnicItems"></div>
+                        </div>
+                        <div class="detection-card" id="passwordDetection">
+                            <div class="detection-icon password-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="detection-info">
+                                <span class="detection-count" id="passwordCount">0</span>
+                                <span class="detection-label">Password References</span>
+                            </div>
+                            <div class="detection-items" id="passwordItems"></div>
+                        </div>
+                    </div>
+
+                    <!-- Security Recommendations -->
+                    <div class="recommendations-card" id="recommendationsCard">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lightbulb"></i> Security Recommendations</h3>
+                        </div>
+                        <div class="recommendations-list" id="recommendationsList"></div>
+                    </div>
+
+                    <!-- Report Download -->
+                    <div class="report-actions">
+                        <button class="btn btn-primary" id="downloadReport">
+                            <i class="fas fa-file-pdf"></i>
+                            Download Report
+                        </button>
+                        <button class="btn btn-outline" id="copyReport">
+                            <i class="fas fa-copy"></i>
+                            Copy Summary
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-star"></i> Features</span>
+                <h2>Comprehensive Privacy <span class="gradient-text">Protection</span></h2>
+                <p>Everything you need to keep your sensitive information safe from accidental exposure.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=250&fit=crop" alt="Email Detection">
+                        <div class="feature-icon-badge">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                    </div>
+                    <h3>Email Detection</h3>
+                    <p>Automatically identifies email addresses in any text format, including complex domain patterns and subdomains.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=400&h=250&fit=crop" alt="Phone Detection">
+                        <div class="feature-icon-badge">
+                            <i class="fas fa-mobile-screen-button"></i>
+                        </div>
+                    </div>
+                    <h3>Phone Number Scanner</h3>
+                    <p>Detects various phone number formats including international codes, local formats, and Pakistani number patterns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&h=250&fit=crop" alt="CNIC Detection">
+                        <div class="feature-icon-badge">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                    </div>
+                    <h3>CNIC Pattern Matching</h3>
+                    <p>Recognizes Pakistani CNIC (Computerized National Identity Card) number patterns in standard and variant formats.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop" alt="Password Detection">
+                        <div class="feature-icon-badge">
+                            <i class="fas fa-key"></i>
+                        </div>
+                    </div>
+                    <h3>Password Keyword Detection</h3>
+                    <p>Identifies password-related keywords and potential credential leaks in text, including common password phrases.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Risk Score">
+                        <div class="feature-icon-badge">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <h3>Privacy Risk Scoring</h3>
+                    <p>Generates a comprehensive risk score based on the type and quantity of sensitive data detected in your text.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop" alt="AI Chatbot">
+                        <div class="feature-icon-badge">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <h3>AI Privacy Chatbot</h3>
+                    <p>Get instant answers to your privacy questions from our AI-powered chatbot with knowledge about digital security best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-route"></i> Process</span>
+                <h2>How It <span class="gradient-text">Works</span></h2>
+                <p>Three simple steps to analyze and protect your sensitive information.</p>
+            </div>
+            <div class="steps-wrapper">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <i class="fas fa-paste"></i>
+                    </div>
+                    <h3>Paste Your Text</h3>
+                    <p>Copy and paste any text you want to check — emails, documents, messages, or social media posts.</p>
+                </div>
+                <div class="step-connector">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Instant Analysis</h3>
+                    <p>Our analyzer scans for sensitive patterns including emails, phones, CNICs, and password references.</p>
+                </div>
+                <div class="step-connector">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-shield"></i>
+                    </div>
+                    <h3>Get Protected</h3>
+                    <p>Review highlighted results, risk scores, and security recommendations to protect your privacy.</p>
+                </div>
+            </div>
+            <div class="how-it-works-image">
+                <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=900&h=400&fit=crop" alt="Privacy Protection Process">
+                <div class="image-overlay-text">
+                    <h3>Your Data Never Leaves Your Browser</h3>
+                    <p>All analysis is performed locally — nothing is sent to any server.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot Section -->
+    <section class="chatbot-section" id="chatbot-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-robot"></i> AI Assistant</span>
+                <h2>AI Privacy <span class="gradient-text">Chatbot</span></h2>
+                <p>Ask any privacy or security question and get instant, helpful answers.</p>
+            </div>
+            <div class="chatbot-wrapper">
+                <div class="chatbot-container">
+                    <div class="chatbot-header">
+                        <div class="chatbot-avatar">
+                            <i class="fas fa-robot"></i>
+                            <span class="online-dot"></span>
+                        </div>
+                        <div class="chatbot-title">
+                            <h4>PrivateID Assistant</h4>
+                            <span>Online — Ask me about privacy & security</span>
+                        </div>
+                    </div>
+                    <div class="chatbot-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                            <div class="message-content">
+                                <p>Hello! 👋 I'm your AI Privacy Assistant. I can help you with:</p>
+                                <ul>
+                                    <li>🔒 Password security tips</li>
+                                    <li>📧 Email privacy protection</li>
+                                    <li>📱 Phone number safety</li>
+                                    <li>🪪 CNIC protection advice</li>
+                                    <li>🛡️ General digital privacy</li>
+                                </ul>
+                                <p>What would you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chatbot-suggestions" id="chatSuggestions">
+                        <button class="suggestion-btn" data-query="How can I protect my email?">📧 Protect my email</button>
+                        <button class="suggestion-btn" data-query="What makes a strong password?">🔑 Strong passwords</button>
+                        <button class="suggestion-btn" data-query="How to keep my CNIC safe online?">🪪 CNIC safety</button>
+                        <button class="suggestion-btn" data-query="Is my phone number at risk?">📱 Phone number risks</button>
+                    </div>
+                    <div class="chatbot-input">
+                        <input type="text" id="chatInput" placeholder="Type your privacy question...">
+                        <button id="chatSendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chatbot-side-info">
+                    <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&h=300&fit=crop" alt="AI Security Assistant">
+                    <div class="side-info-content">
+                        <h3>AI-Powered Privacy Guidance</h3>
+                        <p>Our chatbot provides instant answers about digital privacy, data protection, and security best practices.</p>
+                        <div class="side-info-stats">
+                            <div class="side-stat">
+                                <i class="fas fa-comments"></i>
+                                <span>50+ Topics Covered</span>
+                            </div>
+                            <div class="side-stat">
+                                <i class="fas fa-bolt"></i>
+                                <span>Instant Responses</span>
+                            </div>
+                            <div class="side-stat">
+                                <i class="fas fa-brain"></i>
+                                <span>Smart Suggestions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2>Start Protecting Your Privacy <span class="gradient-text">Today</span></h2>
+                <p>Don't let sensitive information slip through the cracks. Use Private ID to scan your text before sharing it online.</p>
+                <a href="#analyzer" class="btn btn-primary btn-large">
+                    <i class="fas fa-shield-halved"></i>
+                    Start Analyzing Now
+                </a>
+            </div>
+            <div class="cta-image">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&h=400&fit=crop" alt="Protect Your Data">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Private<span class="logo-accent">ID</span></span>
+                    </a>
+                    <p>Your digital privacy, protected automatically. Scan, detect, and secure your sensitive information before it's too late.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#analyzer">Text Analyzer</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#chatbot-section">AI Chatbot</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#">Privacy Tips</a></li>
+                        <li><a href="#">Security Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PrivateID. All rights reserved. Your data stays in your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <button class="floating-chat-btn" id="floatingChatBtn" title="AI Privacy Chat">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetScope — IP Intelligence Analyzer | Decode any IPv4 address instantly</title>
+  <meta name="description" content="NetScope is a free, client-side IPv4 analyzer. Validate, classify, convert to binary, look up location and ISP on a map, and learn networking with a built-in assistant." />
+  <meta name="keywords" content="IP analyzer, IPv4, IP lookup, geolocation, IP map, subnet mask, CIDR, ports, networking tools" />
+  <meta name="author" content="NetScope" />
+  <meta name="theme-color" content="#14161a" />
+  <meta property="og:title" content="NetScope — IP Intelligence Analyzer" />
+  <meta property="og:description" content="Decode any IPv4 address instantly: classification, binary, location map, ISP and more." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%90%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo"><span class="logo-icon"><i class="fa-solid fa-globe"></i></span><span>Net<b>Scope</b></span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#analyzer">Analyzer</a>
+        <a href="#ports">Ports</a>
+        <a href="#charts">Charts</a>
+        <a href="#history">History</a>
+        <a href="#chatbot">Assistant</a>
+        <a href="#how">How It Works</a>
+        <a href="#analyzer" class="btn btn-primary btn-sm nav-cta">Analyze IP</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="grid-bg"></div>
+      <div class="container hero-inner">
+        <div class="hero-text reveal">
+          <span class="pill"><i class="fa-solid fa-bolt"></i> Decode any IPv4 address instantly</span>
+          <h1>Decode Any IPv4 Address Instantly</h1>
+          <p class="hero-sub">NetScope validates, classifies and inspects IPv4 addresses right in your browser: binary and integer forms, class, subnet mask, location on a map, ISP and ASN.</p>
+          <form class="hero-search" id="heroForm" autocomplete="off">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="heroInput" placeholder="Enter an IP, e.g. 8.8.8.8" aria-label="IP address" inputmode="decimal" />
+            <button type="submit" class="btn btn-primary">Analyze</button>
+          </form>
+          <div class="stats-row">
+            <div class="stat"><strong>4</strong><span>Classifications</span></div>
+            <div class="stat"><strong>255+</strong><span>Ports Database</span></div>
+            <div class="stat"><strong>Real-Time</strong><span>Lookup</span></div>
+            <div class="stat"><strong>100%</strong><span>Client-Side</span></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=70" alt="Dark cybersecurity themed network imagery" loading="eager" onerror="this.style.display='none'" />
+            <div class="img-overlay"></div>
+            <div class="scan-line"></div>
+          </div>
+        </div>
+      </div>
+      <a href="#analyzer" class="scroll-hint" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
+    </section>
+
+    <!-- ANALYZER -->
+    <section class="section" id="analyzer">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Core Tool</span>
+          <h2>IP Analyzer</h2>
+          <p>Enter an IPv4 address to get its classification, technical details, and for public IPs the location on a map plus ISP data.</p>
+        </div>
+
+        <div class="analyzer-box card reveal">
+          <form id="analyzeForm" autocomplete="off" novalidate>
+            <div class="input-row">
+              <div class="input-wrap">
+                <i class="fa-solid fa-network-wired"></i>
+                <input type="text" id="ipInput" placeholder="e.g., 8.8.8.8 or 192.168.1.1" aria-label="IPv4 address" inputmode="decimal" maxlength="15" />
+              </div>
+              <button type="submit" class="btn btn-primary" id="analyzeBtn"><i class="fa-solid fa-magnifying-glass-location"></i> Analyze IP</button>
+              <button type="button" class="btn btn-ghost" id="clearBtn"><i class="fa-solid fa-xmark"></i> Clear</button>
+            </div>
+            <div class="sample-row">
+              <button type="button" class="btn btn-outline btn-sm" id="sampleBtn"><i class="fa-solid fa-shuffle"></i> Try Sample IPs</button>
+              <span class="hint">Cycles through 8.8.8.8, 192.168.1.1, 127.0.0.1, 10.0.0.1, 172.16.0.1, 1.1.1.1, 203.0.113.5</span>
+            </div>
+          </form>
+          <div id="validation" class="validation" role="status" aria-live="polite"></div>
+        </div>
+
+        <div id="loader" class="loader hidden"><div class="spinner"></div><span>Analyzing IP address…</span></div>
+        <div id="results" class="results hidden"></div>
+      </div>
+    </section>
+
+    <!-- PORTS -->
+    <section class="section alt" id="ports">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Reference</span>
+          <h2>Common Network Ports &amp; Services</h2>
+          <p>Well-known ports, the services behind them, and how risky they are when exposed to the internet.</p>
+        </div>
+        <div class="ports-toolbar reveal">
+          <div class="input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="portSearch" placeholder="Search by port number or service name…" aria-label="Search ports" />
+          </div>
+          <div class="chips" id="portChips">
+            <button class="chip active" data-risk="all">All</button>
+            <button class="chip" data-risk="safe">Safe</button>
+            <button class="chip" data-risk="warning">Warning</button>
+            <button class="chip" data-risk="danger">Danger</button>
+          </div>
+        </div>
+        <div class="ports-grid" id="portsGrid"></div>
+        <p class="no-results hidden" id="portsEmpty"><i class="fa-regular fa-face-frown"></i> No ports match your search.</p>
+      </div>
+    </section>
+
+    <!-- CHARTS -->
+    <section class="section" id="charts">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Visualizations</span>
+          <h2>Your Search Insights</h2>
+          <p>Charts update as you analyze more addresses. Data stays in your browser.</p>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card card reveal"><h3><i class="fa-solid fa-chart-pie"></i> IP Class Distribution</h3><div class="chart-box"><canvas id="classChart"></canvas></div><p class="chart-empty hidden" data-for="classChart">Analyze an IP to populate this chart.</p></div>
+          <div class="chart-card card reveal"><h3><i class="fa-solid fa-chart-bar"></i> IP Type Distribution</h3><div class="chart-box"><canvas id="typeChart"></canvas></div><p class="chart-empty hidden" data-for="typeChart">Analyze an IP to populate this chart.</p></div>
+          <div class="chart-card card wide reveal"><h3><i class="fa-solid fa-bullseye"></i> Port Security Risk by Category</h3><div class="chart-box"><canvas id="riskChart"></canvas></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="section alt" id="history">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">LocalStorage</span>
+          <h2>Recent Searches</h2>
+          <p>Your last 10 analyses. Click any item to run it again.</p>
+        </div>
+        <div class="history-panel card reveal">
+          <div class="history-head">
+            <h3><i class="fa-solid fa-clock-rotate-left"></i> Search History</h3>
+            <button class="btn btn-danger btn-sm" id="clearHistoryBtn"><i class="fa-solid fa-trash"></i> Clear History</button>
+          </div>
+          <ul id="historyList" class="history-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHATBOT -->
+    <section class="section" id="chatbot">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Learn</span>
+          <h2>NetScope AI Assistant</h2>
+          <p>Ask networking questions. The assistant works offline with a built-in knowledge base.</p>
+        </div>
+        <div class="chat card reveal">
+          <div class="chat-header">
+            <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+            <div><strong>NetScope AI Assistant</strong><span class="online"><i></i> Online</span></div>
+          </div>
+          <div class="chat-body" id="chatBody" aria-live="polite"></div>
+          <div class="suggestions" id="suggestions"></div>
+          <form class="chat-form" id="chatForm" autocomplete="off">
+            <input type="text" id="chatInput" placeholder="Ask about IPs, DNS, NAT, subnets…" aria-label="Chat message" />
+            <button type="submit" class="btn btn-primary" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section alt" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Simple</span>
+          <h2>How It Works</h2>
+          <p>From raw address to full intelligence in three steps.</p>
+        </div>
+        <div class="steps">
+          <div class="step card reveal"><div class="step-num">01</div><div class="step-icon"><i class="fa-solid fa-keyboard"></i></div><h3>Enter an IP</h3><p>Type any IPv4 address.</p></div>
+          <div class="step card reveal"><div class="step-num">02</div><div class="step-icon"><i class="fa-solid fa-microchip"></i></div><h3>Instant Analysis</h3><p>Validation, classification, and lookup.</p></div>
+          <div class="step card reveal"><div class="step-num">03</div><div class="step-icon"><i class="fa-solid fa-map-location-dot"></i></div><h3>Get Intelligence</h3><p>View detailed network information and see the location on a map.</p></div>
+        </div>
+        <div class="banner reveal">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=70" alt="Dark data center server room" loading="lazy" onerror="this.style.display='none'" />
+          <div class="banner-overlay"></div>
+          <div class="banner-text"><h3>Built for the way networks really work</h3><p>Calculations run locally in your browser. Only public IP lookups contact a geolocation service.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo"><span class="logo-icon"><i class="fa-solid fa-globe"></i></span><span>Net<b>Scope</b></span></a>
+        <p>Decode any IPv4 address instantly. A fast, private, client-side toolkit for learning and inspecting IP networks.</p>
+        <div class="socials">
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        </div>
+      </div>
+      <div><h4>Product</h4><a href="#analyzer">IP Analyzer</a><a href="#ports">Ports Reference</a><a href="#charts">Charts</a><a href="#chatbot">AI Assistant</a></div>
+      <div><h4>Resources</h4><a href="#how">How It Works</a><a href="#history">Search History</a><a href="#chatbot">Networking Guides</a><a href="#home">Documentation</a></div>
+      <div><h4>Legal</h4><a href="#home">Privacy Policy</a><a href="#home">Terms of Service</a><a href="#home">Cookie Policy</a><a href="#home">Contact</a></div>
+    </div>
+    <div class="container footer-bottom"><span>&copy; <span id="year">2026</span> NetScope — IP Intelligence Analyzer. All rights reserved.</span><span>Geolocation by ip-api.com · Map data &copy; OpenStreetMap contributors</span></div>
+  </footer>
+
+  <a href="#chatbot" class="fab" id="fab" aria-label="Open chat assistant"><i class="fa-solid fa-comments"></i></a>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
